@@ -32,4 +32,6 @@
 *.app
 
 # VS folders
-*x64
+*x64*
+*bin*
+.vs*
