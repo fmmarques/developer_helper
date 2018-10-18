@@ -16,36 +16,60 @@
     <Filter Include="Header Files\multithreading">
       <UniqueIdentifier>{5cb10f96-5110-47f1-b532-adbb00c4f63d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\multithreading">
+      <UniqueIdentifier>{3dd9c081-4ad4-432e-90c0-a0a090bd1f9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\networking">
+      <UniqueIdentifier>{d5cad4bb-4719-420f-a1fb-7dcdfc0a89c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\networking">
+      <UniqueIdentifier>{2397b5d1-5734-40e3-a6e1-c50bbbc35027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\security">
+      <UniqueIdentifier>{921757ba-69ff-47bd-9c56-5f1a25700781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\security">
+      <UniqueIdentifier>{1454d1d4-ef5f-46e1-b6ee-42e1267098f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\connector.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\definitions.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\locks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sys_error.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\functions.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\process.hpp">
+    <ClInclude Include="include\errors.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\connector.hpp">
+      <Filter>Header Files\networking</Filter>
+    </ClInclude>
+    <ClInclude Include="include\multithreading\locks.hpp">
       <Filter>Header Files\multithreading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\multithreading\process.hpp">
+      <Filter>Header Files\multithreading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\networking\connector.hpp">
+      <Filter>Header Files\networking</Filter>
+    </ClInclude>
+    <ClInclude Include="include\security\token.hpp">
+      <Filter>Header Files\security</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\connector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\process.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\functions.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\multithreading\process.cpp">
+      <Filter>Source Files\multithreading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\networking\connector.cpp">
+      <Filter>Source Files\networking</Filter>
+    </ClCompile>
+    <ClCompile Include="src\security\token.cpp">
+      <Filter>Source Files\security</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
