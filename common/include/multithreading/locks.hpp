@@ -29,9 +29,9 @@ namespace std
 #endif
 
 
-namespace collab {
-	namespace locks {
-
+namespace common {
+	namespace multithreading {
+		
 		/**
 		* Allows for .NET
 		*/
@@ -236,6 +236,7 @@ namespace collab {
 		using scoped_reader_lock = interface1::scoped_lock< System::Threading::ReaderWriterLock, interface1::rw_reader_lock_strategy >;
 		using scoped_slimwriter_lock = scoped_lock< System::Threading::ReaderWriterLockSlim, interface1::rwslim_writer_lock_strategy >;
 		using scoped_slimread_lock = scoped_lock< System::Threading::ReaderWriterLockSlim, interface1::rwslim_reader_lock_strategy >;
+	
 	}
 }
 

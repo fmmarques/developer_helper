@@ -1,15 +1,16 @@
 #include "definitions.hpp"
 
 #include <iostream>
-#include <connector.hpp>
 #include <Windows.h>
 
 #include <boost\asio.hpp>
 
 #include <boost\program_options.hpp>
-#include <process.hpp>
 
-using networking::ssl::connector;
+#include <multithreading\process.hpp>
+#include <networking\connector.hpp>
+
+using common::networking::ssl::connector;
 using boost::asio::ip::tcp;
 namespace po = boost::program_options;
 
@@ -22,7 +23,7 @@ try
 	std::string host{ "" };
 
 	std::wcerr << "A1" << std::endl;
-	process< user_type::current_user, HANDLE, HANDLE > process = make_process("c:\\windows\\explorer.exe", "%LOCALAPPDATA%", 0x00);
+	common::multithreading::process< common::multithreading::user_type::current_user, HANDLE, HANDLE > process = common::multithreading::make_process("c:\\windows\\explorer.exe", "%LOCALAPPDATA%", 0x00);
 	std::wcerr << "A2" << std::endl;
 	return 1;
 	

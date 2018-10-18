@@ -27,38 +27,34 @@ namespace
 }
 
 
-namespace fmmarques {
-	namespace devhelper {
-		namespace service {
-			namespace interface1 {
+namespace services {
+	namespace interface1 {
 
-				void service_control::adjust_privilege()
-				{}
+		void service_control::adjust_privilege()
+		{}
 
-				service_control::service_control():
-					service_control_manager_handle(NULL)
-				{
-					char computer_name[MAX_COMPUTERNAME_LENGTH + 1];
-					u_long computer_names_length = 0;
+		service_control::service_control():
+			service_control_manager_handle(NULL)
+		{
+			char computer_name[MAX_COMPUTERNAME_LENGTH + 1];
+			u_long computer_names_length = 0;
 					
-					if (false == GetComputerName(computer_name, &computer_names_length))
-						throw std::runtime_error("Couldn't obtain the computer's name.");
+			if (false == GetComputerName(computer_name, &computer_names_length))
+				throw std::runtime_error("Couldn't obtain the computer's name.");
 			
-					computer_name[computer_names_length] = '\0';
+			computer_name[computer_names_length] = '\0';
 
-					service_control_manager_handle = OpenSCManager(computer_name, SERVICES_ACTIVE_DATABASE, SC_MANAGER_ALL_ACCESS);
-					if (NULL == service_control_manager_handle)
-					{
-						;
-					}
-				}
-
-
-				service_control::~service_control()
-				{
-				}
-
+			service_control_manager_handle = OpenSCManager(computer_name, SERVICES_ACTIVE_DATABASE, SC_MANAGER_ALL_ACCESS);
+			if (NULL == service_control_manager_handle)
+			{
+				;
 			}
 		}
+
+
+		service_control::~service_control()
+		{
+		}
+
 	}
 }

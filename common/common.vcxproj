@@ -20,16 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\functions.hpp" />
-    <ClInclude Include="sys_error.hpp" />
     <ClInclude Include="include\connector.hpp" />
     <ClInclude Include="include\definitions.hpp" />
-    <ClInclude Include="include\locks.h" />
-    <ClInclude Include="include\process.hpp" />
+    <ClInclude Include="include\errors.hpp" />
+    <ClInclude Include="include\multithreading\locks.hpp" />
+    <ClInclude Include="include\multithreading\process.hpp" />
+    <ClInclude Include="include\networking\connector.hpp" />
+    <ClInclude Include="include\security\token.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\connector.cpp" />
     <ClCompile Include="src\functions.cpp" />
-    <ClCompile Include="src\process.cpp" />
+    <ClCompile Include="src\multithreading\process.cpp" />
+    <ClCompile Include="src\networking\connector.cpp" />
+    <ClCompile Include="src\security\token.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -117,10 +117,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="exceptions.h" />
-    <ClInclude Include="service.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\service.cpp" />
   </ItemGroup>
@@ -128,6 +124,10 @@
     <ProjectReference Include="..\common\common.vcxproj">
       <Project>{bb2b2e33-a586-4679-a357-ad997461378e}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\exceptions.hpp" />
+    <ClInclude Include="include\services\service.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
