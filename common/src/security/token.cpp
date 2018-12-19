@@ -6,7 +6,7 @@ namespace common {
 		
 			token::token()
 			{
-				GetSecurityToken
+				//GetSecurityToken
 			}
 
 		}
