@@ -31,6 +31,12 @@
     <Filter Include="Source Files\security">
       <UniqueIdentifier>{1454d1d4-ef5f-46e1-b6ee-42e1267098f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\networking\rtp">
+      <UniqueIdentifier>{f7cf7398-555c-4a68-8ffe-d2ee67ffbe74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\networking\rtp">
+      <UniqueIdentifier>{043e58e3-2d5f-451b-acb0-0487c8e78b00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\definitions.hpp">
@@ -41,9 +47,6 @@
     </ClInclude>
     <ClInclude Include="include\errors.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\connector.hpp">
-      <Filter>Header Files\networking</Filter>
     </ClInclude>
     <ClInclude Include="include\multithreading\locks.hpp">
       <Filter>Header Files\multithreading</Filter>
@@ -56,6 +59,15 @@
     </ClInclude>
     <ClInclude Include="include\security\token.hpp">
       <Filter>Header Files\security</Filter>
+    </ClInclude>
+    <ClInclude Include="include\networking\rtp.h">
+      <Filter>Header Files\networking\rtp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\networking\rtp\rtp.h">
+      <Filter>Header Files\networking\rtp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\networking\rtp\rtpstream.hpp">
+      <Filter>Header Files\networking\rtp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="src\security\token.cpp">
       <Filter>Source Files\security</Filter>
+    </ClCompile>
+    <ClCompile Include="src\networking\rtp\rtp.cpp">
+      <Filter>Source Files\networking\rtp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
