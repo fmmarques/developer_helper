@@ -3,51 +3,60 @@
 #	define RTP_RTPSTREAM_HPP
 
 #	include "networking/rtp/rtp.h"
+#	include <cstdlib>
 #	include <iostream>
 
 namespace common {
 	namespace networking {
 		namespace rtp {
-		
-			struct empty_base {};
-
-			template < uint16_t increment, uint16_t seed >
-			class sequence_number_generator: empty_base
-			{
-			private:
-				uint16_t present_increment;
-				uint16_t used_seed;
-			public:
-				sequence_number_generator() 
-				{ 
-					present_increment = seed;
-				}
-
-				uint16_t next()
+			
+			
+			namespace interface1 {
+				namespace
 				{
-					return present_increment += increment;
+					struct unused_empty_base {};
 				}
 
+				template < uint16_t increment, uint16_t seed >
+				class basic_sequence_number_generator: common::networking::rtp::interface1::unused_empty_base 
+				{
+				private:
+					uint16_t present_increment;
+				public:
+					basic_sequence_number_generator():
+						present_increment{ srand((time() * seed) % RAND_MAX) };
+					{ }
 
-			};
+					basic_sequence_number_generator(basic_sequence_number_generator&& rhs) :
+						present_increment{rhs.present_increment}
+					{ }
 
-			template< class descriptor_t >
-			struct protocol_traits: empty_base
-			{
-				using seq_num_generator = sequence_number_generator< descriptor_t::increment, descriptor_t::seed >
-			};
 
-			template< typename strategy_t >
-			class rtpstream : public std::basic_stream< rtppacket, strategy_t >
-			{
-			private:
-				strategy_t::seq_num_generator generator;
-				strategy_t::
-				SOCKET socket;
-			public:
-				rtpstream(SOCKET socket);
-				std::rtpstream& operator<< (std::rtpstream& out, const rtpstream& packet) { throw "not implemented."; }
-			};
+					uint16_t next()
+					{
+						return present_increment = (present_increment + increment) % UINT16_MAX;
+					}
+
+				};
+
+				template< class descriptor_t >
+				struct protocol_traits: unused_empty_base
+				{
+					using sequence_number_generator = basic_sequence_number_generator< descriptor_t::increment, descriptor_t::seed >;
+				};
+
+				template< typename strategy_t >
+				class rtpstream : public std::streambuf< rtppacket, strategy_t >
+				{
+				private:
+					strategy_t::sequence_number_generator generator;
+					strategy_t::
+					SOCKET socket;
+				public:
+					rtpstream(SOCKET socket);
+					std::rtpstream& operator<< (std::rtpstream& out, const rtpstream& packet) { throw "not implemented."; }
+				};
+			}
 
 		}
 	}

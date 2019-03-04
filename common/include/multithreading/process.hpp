@@ -7,9 +7,10 @@
 #	include <Windows.h>
 #	include <ProcessSnapshot.h>
 
+#	include "empty_base.hpp"
 #	include "errors.hpp"
 
-#include <iostream>
+#	include <iostream>
 
 namespace common {
 	namespace multithreading {
@@ -19,9 +20,15 @@ namespace common {
 
 			enum class user_type { current_user, impersonate_user, logon_user };
 			
+			class process_mixin : public empty_base
+			{
+			public:
+				virtual void terminate();
+			};
+
 			template < user_type type, typename _input, typename _output > class process;
 
-			template < > class process< user_type::current_user, HANDLE, HANDLE >
+			template < > class process< user_type::current_user, HANDLE, HANDLE > 
 			{
 			protected:
 				HANDLE input;
@@ -40,7 +47,9 @@ namespace common {
 					process_information{ rhs.process_information },
 					flags{ rhs.flags },
 					directory{ rhs.directory }
-				{}
+				{
+					rhs.input = rhs.output = INVALID_HANDLE_VALUE;
+				}
 
 				process(const process& other):
 					input{ other.input },
@@ -51,7 +60,7 @@ namespace common {
 					directory{ other.directory }
 				{}
 
-				process(const std::string& image_file, HANDLE input_handle, HANDLE output_handle, const std::string& arguments, DWORD process_flags, BOOL inherit_handle = false,  const std::string& process_directory = ".") :
+				process(const std::string& image_file, HANDLE input_handle, HANDLE output_handle, const std::string& arguments, DWORD process_flags, BOOL inherit_handle = false,  const std::string& process_directory = ".") noexcept(false) :
 					input{ input_handle },
 					output{ output_handle },
 					startup_information{ 0 },
@@ -113,23 +122,32 @@ namespace common {
 				{ }
 
 				virtual ~process()
-				{ }
+				{ 
+					CloseHandle(input);
+					CloseHandle(output);
+				}
 
 				// methods,
 
 			};
 
-			// Implement a process that impersonates an user using CreateProcessAsUser/LogonUser or CreateProcessWithToken/LogonUser, but check if process has SE_INCREASE_QUOTA_NAME privilege (and maybe SE_ASSIGNPRIMARYTOKEN_NAME), TOKEN_QUERY, TOKEN_DUPLICATE, and TOKEN_ASSIGN_PRIMARY
+			// Implement a process that impersonates an user using CreateProcessAsUser/LogonUser or CreateProcessWithToken/LogonUser, but check if process has SE_INCREASE_QUOTA_NAME 
+			// privilege (and maybe SE_ASSIGNPRIMARYTOKEN_NAME), TOKEN_QUERY, TOKEN_DUPLICATE, and TOKEN_ASSIGN_PRIMARY
+			
+
 
 			// Implement a process that logs on an user using CreateProcessWithLogon 
 
 			// Add in all implementations the possibility to add a custom environment block.
 
 			template < typename _in, typename _out > process< user_type::current_user, _in, _out > make_process(const std::string& image_name, const std::string& argument_name, _in input, _out output);
+			
 			process< user_type::current_user, HANDLE, HANDLE > make_process(const std::string& image_name, const std::string& argument_name, HANDLE input, HANDLE output);
+			
 			process< user_type::current_user, HANDLE, HANDLE > make_process(const std::string& image_name, const std::string& argument_name, DWORD flags);
 
 			template < typename _in, typename _out > process< user_type::impersonate_user, _in, _out > make_process_as_logon(const std::string& username, const std::string& password, const std::string& image_name, const std::string& argument_name);
+			
 			template < typename _in, typename _out > process< user_type::logon_user, _in, _out > make_process_as_logon(const std::string& username, const std::string& password, const std::string& image_name, const std::string& argument_name);
 
 		}

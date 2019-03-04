@@ -2,6 +2,7 @@
 #if !defined(COMMON_SECURITY_TOKEN_HPP)
 #	define COMMON_SECURITY_TOKEN_HPP 
 
+struct IUnknown;
 #include <Windows.h>
 
 namespace common {
@@ -15,8 +16,6 @@ namespace common {
 			public:
 				token(const HANDLE& token);
 				virtual ~token();
-
-
 			};
 		}
 	}

@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\empty_base.hpp" />
+    <ClInclude Include="include\filesystem.h" />
     <ClInclude Include="include\functions.hpp" />
     <ClInclude Include="include\definitions.hpp" />
     <ClInclude Include="include\errors.hpp" />
@@ -27,14 +29,21 @@
     <ClInclude Include="include\networking\connector.hpp" />
     <ClInclude Include="include\networking\rtp.h" />
     <ClInclude Include="include\networking\rtp\rtp.h" />
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\expression.h" />
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\level.h" />
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\line.h" />
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\timestamp_token.h" />
+    <ClInclude Include="include\parsing\logs\onesipconnector\parser.h" />
     <ClInclude Include="include\security\token.hpp" />
     <ClInclude Include="src\networking\rtp\rtpstream.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\filesystem.cpp" />
     <ClCompile Include="src\functions.cpp" />
     <ClCompile Include="src\multithreading\process.cpp" />
     <ClCompile Include="src\networking\connector.cpp" />
     <ClCompile Include="src\networking\rtp\rtp.cpp" />
+    <ClCompile Include="src\parsing\logs\abstract_syntax_tree\level.cpp" />
     <ClCompile Include="src\security\token.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -105,7 +114,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>D:\src\developer_helper\common\include\networking;$(IncludePath)</IncludePath>
+    <IncludePath>D:\src\boost_1_69_0\;D:\src\developer_helper\common\include\networking;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
@@ -128,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>D:\src\developer_helper\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
