@@ -37,6 +37,33 @@
     <Filter Include="Header Files\networking\rtp">
       <UniqueIdentifier>{043e58e3-2d5f-451b-acb0-0487c8e78b00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\parsing">
+      <UniqueIdentifier>{2c9b5bdc-63c8-4b96-865c-bde966a5090e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\parsing\logs">
+      <UniqueIdentifier>{3669ba49-80d6-45f9-ae1f-5b6a08cc03d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\parsing\logs\osc">
+      <UniqueIdentifier>{1dd7afea-262a-479d-a36e-e05f5353e080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\parsing\logs\visitors">
+      <UniqueIdentifier>{4bdabf0f-a482-4e18-81ba-73a746440e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\parsing\logs\abstract_syntax_tree">
+      <UniqueIdentifier>{67887aa2-9052-457f-b741-8555c5f99952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parsing">
+      <UniqueIdentifier>{cfb74b38-1d65-4710-b2d5-000211ecee43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parsing\logs">
+      <UniqueIdentifier>{dc8e4144-e448-4214-a36d-ba2bcef6d4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parsing\logs\abstract_syntax_tree">
+      <UniqueIdentifier>{c5274ce6-e74d-4421-b5e4-1544622d1140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\filesystem">
+      <UniqueIdentifier>{24410375-d110-4ada-9ba2-73806d62b21a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\definitions.hpp">
@@ -69,6 +96,27 @@
     <ClInclude Include="src\networking\rtp\rtpstream.hpp">
       <Filter>Header Files\networking\rtp</Filter>
     </ClInclude>
+    <ClInclude Include="include\parsing\logs\onesipconnector\parser.h">
+      <Filter>Header Files\parsing\logs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\timestamp_token.h">
+      <Filter>Header Files\parsing\logs\abstract_syntax_tree</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\expression.h">
+      <Filter>Header Files\parsing\logs\abstract_syntax_tree</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\line.h">
+      <Filter>Header Files\parsing\logs\abstract_syntax_tree</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parsing\logs\abstract_syntax_tree\level.h">
+      <Filter>Header Files\parsing\logs\abstract_syntax_tree</Filter>
+    </ClInclude>
+    <ClInclude Include="include\empty_base.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\filesystem.h">
+      <Filter>Header Files\filesystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\functions.cpp">
@@ -85,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="src\networking\rtp\rtp.cpp">
       <Filter>Source Files\networking\rtp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parsing\logs\abstract_syntax_tree\level.cpp">
+      <Filter>Source Files\parsing\logs\abstract_syntax_tree</Filter>
+    </ClCompile>
+    <ClCompile Include="src\filesystem.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

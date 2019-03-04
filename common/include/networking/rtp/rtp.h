@@ -4,6 +4,7 @@
 
 #include <ostream>
 #include <cstdint>
+struct IUnknown;
 #include <winsock2.h>
 
 
