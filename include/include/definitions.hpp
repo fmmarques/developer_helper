@@ -1,0 +1,14 @@
+#pragma once
+#if !defined(DEFINITIONS_HPP)
+#	define DEFINITIONS_HPP
+
+#	define ANSI
+#	define NTDDI_VERSION 0x06010000
+#	define _WIN32_WINDOWS 0x0601
+#	define WINVER 0x0601
+#	define WIN32_LEAN_AND_MEAN
+#	define _WINSOCK_DEPRECATED_NO_WARNINGS
+#	define _CRT_SECURE_NO_WARNINGS
+
+
+#endif
