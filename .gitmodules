@@ -1,0 +1,8 @@
+[submodule "googletest"]
+	path = libs/googletest
+	url = https://github.com/google/googletest
+	branch = main
+[submodule "poco"]
+	path = libs/poco
+	url = https://github.com/pocoproject/poco
+	branch = main
