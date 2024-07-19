@@ -3,19 +3,24 @@
 import subprocess
 import click
 
+def do_command(cmd):
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    for line in iter(process.stdout.readline, b''):
+        print(line.decode('utf-8').strip())
+    process.communicate()
+
+
 @click.group()
 def cmake():
     pass
 
 @click.command()
 def run():
-    result = subprocess.run(['cmake', '-B', './build/'], stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
+    do_command("cmake -B './build/'")
 
 @click.command()
 def refresh():
-    result = subprocess.run(['cmake', '--fresh', '-B', './build/'], stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
+    do_command("cmake --fresh -B './build/'")
 
 cmake.add_command(run)
 cmake.add_command(refresh)
@@ -26,18 +31,16 @@ def make():
 
 @click.command()
 def all():
-    result = subprocess.run(['make', '-C', './build/'], stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
+    do_command("make -C './build/'")
 
 @click.command()
 def clean():
-    result = subprocess.run(['make', '-C', './build/', 'clean'], stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
+    do_command("make -C './build/' clean")
 
 @click.command()
 def rebuild():
-    result = subprocess.run(['make', '-C', './build/', 'clean'], stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
+    do_command("make -C './build/' clean")
+    do_command("make -C './build/' all")
 
 make.add_command(all)
 make.add_command(clean)
@@ -48,7 +51,7 @@ def test():
     pass
 
 @click.command()
-def runAll()
+def runAll():
     result = subprocess.run(['make', '-C', './build/', 'clean'], stdout=subprocess.PIPE)
     print(result.stdout.decode('utf-8'))
 
