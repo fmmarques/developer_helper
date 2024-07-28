@@ -151,6 +151,8 @@ def do_command(cmd, dry_run=False):
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     for line in iter(process.stdout.readline, b''):
         print(line.decode('utf-8').strip())
+    for line in iter(process.stderr.readline, b''):
+        print(line.decode('utf-8').strip())
     process.communicate()
 
 

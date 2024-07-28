@@ -14,10 +14,13 @@ add_subdirectory(libs/googletest)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # Add test directory
-file(GLOB TEST_SRCS test/*.cpp)
-add_executable(dev_tests ${TEST_SRCS})
-target_link_libraries(dev_tests dev gtest_main)
-add_test(dev_tests dev_tests)
+#file(GLOB TEST_SRCS test/*.cpp)
+set(TEST_FEAT_DESIGN   test/feature/design-pattern/stack-machine.cpp)
+add_executable(feature-design-pattern ${TEST_FEAT_DESIGN})
+target_link_libraries(feature-design-pattern dev gtest_main)
+
+
+add_test(NAME dev_tests COMMAND feature-design-pattern)
 
 # Add POCO
 add_subdirectory(libs/poco)

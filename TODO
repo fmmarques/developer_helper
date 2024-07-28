@@ -1,6 +1,6 @@
-Work on a feature to have a structure for algorithms.
-Work on a feature to have a structure for data structures.
 Work on a feature to have a structure for design patterns. (may depend on algorithms and data-structures)
-{
-    Add a stack machine.
-}
+
+Add null_state
+Change the methods to snake case.
+Fix test/feature/design-pattern/stack-machine.cpp
+Modify the stack-machine to be a state machine?!? LOL
