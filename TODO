@@ -1,3 +1,6 @@
 Work on a feature to have a structure for algorithms.
 Work on a feature to have a structure for data structures.
 Work on a feature to have a structure for design patterns. (may depend on algorithms and data-structures)
+{
+    Add a stack machine.
+}
